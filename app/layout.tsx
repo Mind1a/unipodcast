@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Georgian } from "next/font/google";
-import { Providers } from "./providers";
-import "./globals.css";
 
-const notoSansGeorgian = Noto_Sans_Georgian({
-  variable: "--font-noto",
-  subsets: ["georgian", "latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
+import "./globals.css";
+import { bebasNeue, notoSansGeorgian } from "./fonts";
+import { QueryProvider } from "@/query/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,10 +17,10 @@ export default function RootLayout({
   return (
     <html
       lang="ka"
-      className={`${notoSansGeorgian.variable} h-full antialiased`}
+      className={`${notoSansGeorgian.variable} ${bebasNeue.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
+      <body className="flex min-h-full flex-col font-sans">
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
