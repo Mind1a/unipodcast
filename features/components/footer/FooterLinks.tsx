@@ -3,13 +3,15 @@ import { footerNavigation } from "./footerData";
 
 const FooterLinks = () => {
   return (
-    <nav>
-      <h3>{footerNavigation.title}</h3>
+    <nav className="font-sans mt-8 md:mt-0">
+      <h3 className="text-white font-bold">{footerNavigation.title}</h3>
 
-      <ul>
+      <ul className="mt-6 flex flex-col gap-2 text-white">
         {footerNavigation.links.map((link) => (
           <li key={link.id}>
-            <Link href={link.href}>{link.label}</Link>
+            <Link className="hover:text-[#FED403]" href={link.href}>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>
