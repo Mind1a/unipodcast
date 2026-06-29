@@ -1,3 +1,5 @@
+import Marquee from "@/feature/landing/components/Marquee";
+
 const page = () => {
   return (
     <div>
@@ -5,6 +7,7 @@ const page = () => {
       <p className="font-bold">Noto Bold</p>
       <p className="font-black">Noto Black</p>
       <h1 className="font-display">Bebas Title</h1>
+      <Marquee/>
     </div>
   );
 };
