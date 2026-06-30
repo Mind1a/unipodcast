@@ -1,10 +1,12 @@
 import Statistics from "@/feature/landing/components/Statistics";
+import Marquee from "@/feature/landing/components/Marquee";
 
-const Page = () => {
+const page = () => {
   return (
-    <main>
+    <div>
+      <Marquee/>
       <Statistics />
-    </main>
+    </div>
   );
 };
 
