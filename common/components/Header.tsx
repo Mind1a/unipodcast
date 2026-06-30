@@ -127,6 +127,7 @@ export default function Header() {
             height={80}
             src="/assets/images/logo.svg"
             alt="Logo"
+            loading="eager"
           />
         </Link>
 
