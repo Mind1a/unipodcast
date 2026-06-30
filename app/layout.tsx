@@ -19,7 +19,7 @@ export default function RootLayout({
       lang="ka"
       className={`${bebasNeue.variable} ${notoSansGeorgian.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">
+      <body className="flex min-h-full flex-col font-sans bg-[#0F011D]">
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

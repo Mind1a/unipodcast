@@ -13,7 +13,7 @@ const NewsSection = () => {
 
   return (
     <div className="w-full max-w-310  mx-auto flex flex-col">
-      <h2 className="text-[#FBF4FF] font-bold text-[clamp(1.25rem,3vw,2rem)] leading-[100%]  mx-auto font-display ">
+      <h2 className="text-[#FBF4FF] font-bold text-[clamp(1.25rem,3vw,2rem)] leading-[100%]  mx-auto font-bebas ">
         {"სიახლეები".toUpperCase()}
       </h2>
       <div className="overflow-hidden md:my-8 my-6 " ref={emblaRef}>
@@ -26,7 +26,7 @@ const NewsSection = () => {
         </div>
       </div>
       <Link href={"/about"} className="max-w-81.5 w-full mx-auto group ">
-        <button className="w-full border-[0.5px] border-[#FED403] py-3 pr-3 pl-3.5 flex bg-black group-hover:bg-[#FED403] rounded-4xl justify-end gap-[39px] transition-colors duration-300">
+        <button className="w-full border-[0.5px] border-[#FED403] py-3 pr-3 pl-3.5 flex bg-black group-hover:bg-[#F3CD11] rounded-4xl justify-end gap-[39px] transition-colors duration-300">
           <span className="text-[#FED403] group-hover:text-black font-semibold text-base md:text-[18px] h-5.5 ease-in-out  transition-colors duration-300">
             ნახე ყველა სიახლე
           </span>

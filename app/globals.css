@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: var(--font-noto-sans-georgian);
-  --font-display: var(--font-bebas-neue);
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+@theme inline {
+  --font-sans: var(--font-noto-sans-georgian);
+  --font-bebas: var(--font-bebas-neue);
 }

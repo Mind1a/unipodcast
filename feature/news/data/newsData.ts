@@ -22,4 +22,11 @@ export const newsData: NewsType[] = [
       "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
     image: "/assets/images/newsImages/svgs/Colleague.svg",
   },
+  {
+    id: 4,
+    title: "სტუდენტური ცხოვრება",
+    description:
+      "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
+    image: "/assets/images/newsImages/svgs/Globe.svg",
+  },
 ];
