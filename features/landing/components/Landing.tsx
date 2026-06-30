@@ -1,9 +1,13 @@
+import { Suspense } from "react"
+
 import BecomeSpeaker from "./BecomeSpeaker"
 
 const Landing = () => {
     return (
         <div>
-            <BecomeSpeaker />
+            <Suspense fallback={null}>
+                <BecomeSpeaker />
+            </Suspense>
         </div>
     )
 }

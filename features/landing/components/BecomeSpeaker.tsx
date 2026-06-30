@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import Rocket from '../../../public/images/landing/Rocket.svg'
 import Support from '../../../public/images/landing/Support.svg'
@@ -10,14 +10,24 @@ import SpeakerForm from "./SpeakerForm";
 
 const BecomeSpeaker = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const searchParams = useSearchParams();
     const isOpen = searchParams.get("modal") === "speakerForm";
 
     const openModal = () => {
-        router.push("?modal=speakerForm", { scroll: false });
+        const params = new URLSearchParams(searchParams.toString());
+        params.set("modal", "speakerForm");
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
+
     const closeModal = () => {
-        router.back();
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete("modal");
+
+        const query = params.toString();
+        router.replace(query ? `${pathname}?${query}` : pathname, {
+            scroll: false,
+        });
     };
 
     return (
@@ -53,7 +63,7 @@ const BecomeSpeaker = () => {
                             <Image alt="Arrow" src={OpenForm} width={32} height={32} />
                         </button>
 
-                        <SpeakerForm isOpen={isOpen} setIsOpen={closeModal} />
+                        <SpeakerForm isOpen={isOpen} onClose={closeModal} />
 
                         <div className="bg-[#FED403] w-35 h-20 absolute top-25 right-0 rounded-[137px] blur-[110px] md:hidden block"></div>
                         <div className="bg-[#FED403] w-60 h-35 absolute bottom-40 rounded-[137px] blur-[200px] hidden lg:block"></div>

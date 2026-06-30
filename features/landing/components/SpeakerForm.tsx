@@ -1,16 +1,15 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
 
 import CloseBtn from "../../../public/images/landing/CloseBtn.svg";
 
 const SpeakerForm = ({
     isOpen,
-    setIsOpen,
+    onClose,
 }: {
     isOpen: boolean;
-    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    onClose: () => void;
 }) => {
     return (
         <AnimatePresence>
@@ -19,7 +18,7 @@ const SpeakerForm = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    onClick={() => setIsOpen(false)}
+                    onClick={onClose}
                     className="bg-slate-900/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer"
                 >
                     <motion.div
@@ -29,7 +28,7 @@ const SpeakerForm = ({
                         onClick={(e) => e.stopPropagation()}
                         className="bg-[#1E1D2E] max-w-190 w-full h-186.25 text-white p-[20px_24px] rounded-3xl cursor-default relative overflow-hidden flex flex-col"
                     >
-                        <button onClick={() => setIsOpen(false)} className="cursor-pointer mb-4 flex justify-end">
+                        <button onClick={onClose} className="cursor-pointer mb-4 flex justify-end">
                             <Image alt="close" src={CloseBtn} width={32} height={32} />
                         </button>
 
