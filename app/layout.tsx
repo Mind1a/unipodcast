@@ -4,6 +4,7 @@ import "./globals.css";
 import { bebasNeue, notoSansGeorgian } from "./fonts";
 import { QueryProvider } from "@/query/QueryProvider";
 import Footer from "@/features/components/footer/Footer";
+import Header from "@/common/components/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,6 +23,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <QueryProvider>
+          <Header/>
           {children}
           <Footer />
         </QueryProvider>
