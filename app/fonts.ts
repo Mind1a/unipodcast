@@ -11,12 +11,17 @@ export const notoSansGeorgian = localFont({
 export const bebasNeue = localFont({
   src: [
     {
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeueBook-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/assets/fonts/bebasNeue/LGVBebasNeueBold.ttf",
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Bold.otf",
       weight: "700",
       style: "normal",
     },

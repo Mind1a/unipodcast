@@ -7,6 +7,9 @@ export const newsData: NewsType[] = [
     description:
       "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
     image: "/assets/images/newsImages/svgs/Robot.svg",
+    imageWidth: 223,
+    imageHeight: 164,
+    eager: true,
   },
   {
     id: 2,
@@ -14,6 +17,9 @@ export const newsData: NewsType[] = [
     description:
       "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
     image: "/assets/images/newsImages/svgs/Book.svg",
+    imageWidth: 167,
+    imageHeight: 164,
+    eager: true,
   },
   {
     id: 3,
@@ -21,6 +27,8 @@ export const newsData: NewsType[] = [
     description:
       "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
     image: "/assets/images/newsImages/svgs/Colleague.svg",
+    imageWidth: 214,
+    imageHeight: 164,
   },
   {
     id: 4,
@@ -28,5 +36,7 @@ export const newsData: NewsType[] = [
     description:
       "კრიტიკული ფიქრი, შემოქმედება და ახალი პერსპექტივები ერთ კონტექსტში.",
     image: "/assets/images/newsImages/svgs/Globe.svg",
+    imageWidth: 168,
+    imageHeight: 164,
   },
 ];
