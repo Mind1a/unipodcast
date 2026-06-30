@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { bebasNeue, notoSansGeorgian } from "./fonts";
 import { QueryProvider } from "@/query/QueryProvider";
+import Footer from "@/features/components/footer/Footer";
 import Header from "@/common/components/Header";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
         <QueryProvider>
           <Header/>
           {children}
+          <Footer />
         </QueryProvider>
       </body>
     </html>
