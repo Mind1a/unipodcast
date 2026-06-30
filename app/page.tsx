@@ -1,15 +1,16 @@
+
 import Landing from "@/features/landing/components/Landing";
+import Statistics from "@/feature/landing/components/Statistics";
+import Marquee from "@/feature/landing/components/Marquee";
 
 const page = () => {
   return (
     <div>
-      <p>Default Noto ტექსტი</p>
-      <p className="font-bold">Noto Bold</p>
-      <p className="font-black">Noto Black</p>
-      <h1 className="font-display">Bebas Title</h1>
       <Landing />
+      <Marquee/>
+      <Statistics />
     </div>
   );
 };
 
-export default page;
+export default Page;

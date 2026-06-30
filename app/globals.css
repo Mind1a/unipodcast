@@ -3,6 +3,16 @@
 @theme inline {
   --font-sans: var(--font-noto-sans-georgian);
   --font-display: var(--font-bebas-neue);
+
+  --spacing-130-25: 521px;
+  --spacing-85-75: 343px;
+  --spacing-55-5: 222px;
+  --spacing-106: 424px;
+  --spacing-57-75: 231px;
+  --spacing-73-5: 294px;
+  --spacing-180: 720px;
+  --spacing-310: 1240px;
+  --spacing-156-5: 626px;
 }
 
 :root {
