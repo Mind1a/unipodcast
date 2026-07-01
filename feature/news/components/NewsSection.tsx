@@ -4,6 +4,7 @@ import { newsData } from "../data/newsData";
 import NewsCard from "./NewsCard";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import LgvBebasText from "./LgvBebasText";
 
 const NewsSection = () => {
   const [emblaRef] = useEmblaCarousel({
@@ -14,7 +15,7 @@ const NewsSection = () => {
   return (
     <div className="w-full max-w-310  mx-auto flex flex-col mt-10">
       <h2 className="text-[#FBF4FF] font-bold text-[clamp(1.25rem,3vw,2rem)] leading-[100%]  mx-auto font-bebas">
-        {"სიახლეები".toUpperCase()}
+        <LgvBebasText>სიახლეები</LgvBebasText>
       </h2>
       <div className="overflow-hidden md:my-8 my-6 " ref={emblaRef}>
         <div className=" w-full flex lg:gap-5 md:gap-6 gap-4">

@@ -21,7 +21,7 @@ export const bebasNeue = localFont({
       style: "normal",
     },
     {
-      path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Bold.otf",
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Bold.ttf",
       weight: "700",
       style: "normal",
     },
