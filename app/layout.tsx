@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { bebasNeue, notoSansGeorgian } from "./fonts";
 import { QueryProvider } from "@/query/QueryProvider";
+import Footer from "@/features/components/footer/Footer";
+import Header from "@/common/components/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +22,11 @@ export default function RootLayout({
       className={`${bebasNeue.variable} ${notoSansGeorgian.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans bg-[#0F011D]">
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <Header/>
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );
