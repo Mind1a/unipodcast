@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @theme inline {
   --font-sans: var(--font-noto-sans-georgian);
   --font-display: var(--font-bebas-neue);
@@ -15,7 +16,10 @@
   --spacing-156-5: 626px;
 }
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
+

@@ -9,9 +9,23 @@ export const notoSansGeorgian = localFont({
 });
 
 export const bebasNeue = localFont({
-  src: "../public/assets/fonts/bebasNeue/BebasNeue-Regular.ttf",
+  src: [
+    {
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeueBook-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/assets/fonts/bebasNeue/LGVBebasNeue-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-bebas-neue",
-  weight: "400",
-  style: "normal",
   display: "swap",
 });

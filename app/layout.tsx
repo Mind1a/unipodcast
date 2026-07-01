@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <html
       lang="ka"
-      className={`${notoSansGeorgian.variable} ${bebasNeue.variable} h-full antialiased`}
+      className={`${bebasNeue.variable} ${notoSansGeorgian.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">
+      <body className="flex min-h-full flex-col font-sans bg-[#0F011D]">
         <QueryProvider>
           <Header/>
           {children}
