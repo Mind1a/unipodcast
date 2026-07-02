@@ -10,7 +10,7 @@ import member4 from "../../public/assets/images/member4.png";
 import linkedinIcon from "../../public/assets/images/linkedin.svg";
 
 // ---------- data ----------
-const team = [
+const team: TeamMember[] = [
   {
     id: 1,
     name: "გიორგი შერვაშიძე",
@@ -42,13 +42,13 @@ const team = [
 ];
 
 // ---------- types ----------
-interface TeamMember {
+type TeamMember = {
   id: number;
   name: string;
   description: string;
   image: StaticImageData;
   linkedin: string;
-}
+};
 
 // ---------- component ----------
 const Team = () => {
@@ -58,24 +58,31 @@ const Team = () => {
         <h2 className="mb-10 lg:text-[32px] font-bold">გაიცანი ჩვენი გუნდი</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {team.map((member: TeamMember) => (
-            <article key={member.id} className="flex flex-col">
+          {team.map(({ id, name, description, image, linkedin }) => (
+            <article
+              key={id}
+              className="flex flex-col group overflow-hidden rounded-2xl transition-transform group-hover:scale-[1.03]"
+            >
               <Image
-                src={member.image}
-                alt={member.name}
+                src={image}
+                alt={name}
                 width={295}
                 height={185}
-                className="w-full object-cover"
+                className="
+                w-full object-cover
+                transition-transform duration-[600ms]
+                group-hover:scale-[1.3]
+              "
               />
 
-              <div className="p-4 hover:text-purple-600 transition-colors duration-300 hover:bg-white hover:rounded-2xl">
+              <div className="p-4 hover:text-[#8A2BE2] transition-colors duration-500 hover:bg-white hover:rounded-2xl z-10">
                 <h3 className="mt-4 text-2xl font-bold leading-[40px]">
-                  {member.name}
+                  {name}
                 </h3>
 
-                <p className="mt-4 mb-4 leading-[26px]">{member.description}</p>
+                <p className="mt-4 mb-4 leading-[26px]">{description}</p>
 
-                <Link href={member.linkedin} className="mt-4 w-fit">
+                <Link href={linkedin} className="mt-4 w-fit">
                   <Image
                     src={linkedinIcon}
                     alt="LinkedIn"
