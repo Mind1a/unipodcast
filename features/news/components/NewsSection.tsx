@@ -13,7 +13,7 @@ const NewsSection = () => {
   });
 
   return (
-    <div className="w-full max-w-310  mx-auto flex flex-col mt-10">
+    <div className="w-full max-w-310  mx-auto flex flex-col mt-20">
       <h2 className="text-[#FBF4FF] font-bold text-[clamp(1.25rem,3vw,2rem)] leading-[100%]  mx-auto font-display">
         <LgvBebasText>სიახლეები</LgvBebasText>
       </h2>
