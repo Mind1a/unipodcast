@@ -3,6 +3,8 @@ import Image from "next/image";
 import aboutUs1 from "../../public/assets/images/aboutUs1.png";
 import aboutUs2 from "../../public/assets/images/aboutUs2.png";
 
+import Team from "./Team";
+
 const AboutUs = () => {
   return (
     <section className="flex flex-col items-center lg:my-[100px] md:my-12 my-8 lg:gap-[100px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0">
@@ -75,6 +77,10 @@ const AboutUs = () => {
           "
         />
       </div>
+
+      <section>
+        <Team />
+      </section>
     </section>
   );
 };
