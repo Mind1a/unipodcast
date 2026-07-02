@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { footerSocialData } from "./footerSocialData";
+import Image from "next/image";
+import { footerSocialData } from "./footerData";
 
 const FooterSocials = () => {
   return (
@@ -17,7 +17,7 @@ const FooterSocials = () => {
             alt=""
             width={42}
             height={42}
-            className="block group-hover:hidden"
+            className="block transition-opacity duration-300 group-hover:hidden"
           />
 
           <Image
@@ -25,7 +25,7 @@ const FooterSocials = () => {
             alt=""
             width={42}
             height={42}
-            className="hidden group-hover:block"
+            className="hidden transition-opacity duration-300 group-hover:block"
           />
         </Link>
       ))}
