@@ -7,7 +7,7 @@ import Team from "./Team";
 
 const AboutUs = () => {
   return (
-    <section className="flex flex-col items-center lg:my-[100px] md:my-12 my-8 lg:gap-[100px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0">
+    <section className="flex flex-col items-center lg:my-[100px] md:my-12 my-8 lg:gap-[100px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0 bg-[#010101] text-[#FFFFFF]">
       {/* ---------- Fisrt section ---------- */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1240px] gap-8 lg:gap-12 md:py-12">
         <div className="w-full max-w-[492px]">

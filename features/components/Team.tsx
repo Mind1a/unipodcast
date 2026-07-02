@@ -55,9 +55,7 @@ const Team = () => {
   return (
     <section className="px-4 md:px-6 lg:px-8 py-16">
       <div className="mx-auto max-w-[1240px]">
-        <h2 className="mb-10 text-3xl md:text-4xl font-bold">
-          გაიცანი ჩვენი გუნდი
-        </h2>
+        <h2 className="mb-10 lg:text-[32px] font-bold">გაიცანი ჩვენი გუნდი</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {team.map((member: TeamMember) => (
@@ -70,24 +68,26 @@ const Team = () => {
                 className="w-full object-cover"
               />
 
-              <h3 className="mt-4 text-xl font-bold">{member.name}</h3>
+              <div className="p-4 hover:text-purple-600 transition-colors duration-300 hover:bg-white hover:rounded-2xl">
+                <h3 className="mt-4 text-2xl font-bold leading-[40px]">
+                  {member.name}
+                </h3>
 
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-                {member.description}
-              </p>
+                <p className="mt-4 mb-4 leading-[26px]">{member.description}</p>
 
-              <Link href={member.linkedin} className="mt-4 w-fit">
-                <Image
-                  src={linkedinIcon}
-                  alt="LinkedIn"
-                  width={24}
-                  height={24}
-                  className="
+                <Link href={member.linkedin} className="mt-4 w-fit">
+                  <Image
+                    src={linkedinIcon}
+                    alt="LinkedIn"
+                    width={38}
+                    height={38}
+                    className="
                     transition-transform duration-300
                     group-hover:scale-110
                   "
-                />
-              </Link>
+                  />
+                </Link>
+              </div>
             </article>
           ))}
         </div>
