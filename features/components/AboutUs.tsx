@@ -9,9 +9,15 @@ const AboutUs = () => {
   return (
     <section className="flex flex-col items-center lg:my-[100px] md:my-12 my-8 lg:gap-[100px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0 bg-[#010101] text-[#FFFFFF]">
       {/* ---------- Fisrt section ---------- */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1240px] gap-8 lg:gap-12 md:py-12">
+      <section
+        aria-labelledby="who-we-are-heading"
+        className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1240px] gap-8 lg:gap-12 md:py-12"
+      >
         <div className="w-full max-w-[492px]">
-          <h2 className="mb-4 text-[40px] font-bold text-[#FED403] lg:mb-[18px]">
+          <h2
+            id="who-we-are-heading"
+            className="mb-4 text-[40px] font-bold text-[#FED403] lg:mb-[18px]"
+          >
             ვინ ვართ ჩვენ
           </h2>
 
@@ -25,24 +31,23 @@ const AboutUs = () => {
 
         <Image
           src={aboutUs1}
-          alt="ჩვენ შესახებ"
+          alt="გუნდის თანამშრომლობის ილუსტრაცია"
           width={700}
           height={345}
-          className="
-            rounded-[20px]
-            w-[358px] h-[186px]
-            md:w-[361px] md:h-[238px]
-            lg:w-[700px] lg:h-[345px]
-            object-cover
-          "
+          className="rounded-[20px] w-[358px] h-[186px] md:w-[361px] md:h-[238px] lg:w-[700px] lg:h-[345px] object-cover"
         />
-      </div>
+      </section>
 
       {/* ---------- Second section ---------- */}
-      <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-[1240px] gap-8 lg:gap-12">
+      <section
+        aria-labelledby="mission-heading"
+        className="flex flex-col lg:flex-row items-center justify-between w-full max-w-[1240px] gap-8 lg:gap-12"
+      >
         <div className="w-full lg:max-w-[596px]">
           <div className="mb-8 lg:pr-8">
-            <h3 className="mb-2 text-2xl font-bold">ჩვენი მიზანია</h3>
+            <h3 id="mission-heading" className="mb-2 text-2xl font-bold">
+              ჩვენი მიზანია
+            </h3>
 
             <p className="leading-[26px]">
               ჩვენი მიზანია, შევქმნათ ისეთი პლატფორმა, რომელიც განათლებას,
@@ -65,22 +70,14 @@ const AboutUs = () => {
 
         <Image
           src={aboutUs2}
-          alt="ჩვენ შესახებ"
+          alt="უნიპოდკასტის გუნდი სტუდიაში"
           width={596}
           height={397}
-          className="
-            rounded-[20px]
-            w-[358px] h-[239px]
-            md:w-[720px] md:h-[440px]
-            lg:w-[596px] lg:h-[397px]
-            object-cover
-          "
+          className="rounded-[20px] w-[358px] h-[239px] md:w-[720px] md:h-[440px] lg:w-[596px] lg:h-[397px] object-cover"
         />
-      </div>
-
-      <section>
-        <Team />
       </section>
+
+      <Team />
     </section>
   );
 };
