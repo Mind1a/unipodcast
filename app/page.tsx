@@ -1,7 +1,7 @@
-import NewsSection from "@/feature/news/components/NewsSection";
+import NewsSection from "@/features/news/components/NewsSection";
 import Landing from "@/features/landing/components/Landing";
-import Statistics from "@/feature/landing/components/Statistics";
-import Marquee from "@/feature/landing/components/Marquee";
+import Statistics from "@/features/landing/components/Statistics";
+import Marquee from "@/features/landing/components/Marquee";
 
 const page = () => {
   return (
