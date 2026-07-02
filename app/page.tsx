@@ -3,16 +3,15 @@ import Landing from "@/features/landing/components/Landing";
 import Statistics from "@/feature/landing/components/Statistics";
 import Marquee from "@/feature/landing/components/Marquee";
 
-
 const page = () => {
   return (
     <div>
       <NewsSection />
       <Landing />
-      <Marquee/>
+      <Marquee />
       <Statistics />
     </div>
   );
 };
 
-export default Page;
+export default page;
