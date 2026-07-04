@@ -8,6 +8,7 @@ import member3 from "../../public/assets/images/member3.png";
 import member4 from "../../public/assets/images/member4.png";
 
 import linkedinIcon from "../../public/assets/images/linkedin.svg";
+import linkedinIconPurple from "../../public/assets/images/linkedin-purple.svg";
 
 // ---------- data ----------
 const team: TeamMember[] = [
@@ -69,15 +70,17 @@ const Team = () => {
               key={id}
               className="flex flex-col group overflow-hidden rounded-2xl  transition-transform duration-300 group-hover:scale-[1.03] focus-within:scale-[1.03] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#8A2BE2]"
             >
-              <Image
-                src={image}
-                alt={name}
-                width={295}
-                height={185}
-                className="w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.3]"
-              />
+              <div className="relative w-full h-[185px] overflow-hidden">
+                <Image
+                  src={image}
+                  alt={name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-[600ms] group-hover:scale-[1.3]"
+                />
+              </div>
 
-              <div className="p-4 hover:text-[#8A2BE2] transition-colors duration-500 hover:bg-white hover:rounded-2xl z-10">
+              <div className="p-4 transition-colors duration-500 group-hover:text-[#8A2BE2] group-hover:bg-white group-hover:rounded-2xl z-10">
                 <h3 className="mt-4 text-2xl font-bold leading-[40px]">
                   {name}
                 </h3>
@@ -89,7 +92,7 @@ const Team = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${name}-ის LinkedIn პროფილი`}
-                  className="mt-4 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8A2BE2]"
+                  className="relative block w-[38px] h-[38px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8A2BE2]"
                 >
                   <Image
                     src={linkedinIcon}
@@ -97,7 +100,16 @@ const Team = () => {
                     aria-hidden="true"
                     width={38}
                     height={38}
-                    className="transition-transform duration-300 group-hover:scale-110"
+                    className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
+                  />
+
+                  <Image
+                    src={linkedinIconPurple}
+                    alt=""
+                    aria-hidden="true"
+                    width={38}
+                    height={38}
+                    className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   />
                 </Link>
               </div>
