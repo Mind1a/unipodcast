@@ -159,7 +159,7 @@ const SpeakerForm = ({
                                     {errors.text && <p className="text-[14px] text-red-400">{errors.text.message}</p>}
                                 </div>
 
-                                <button type="submit" className="bg-[#EFC906] text-[14px] leading-100% font-bold text-[#0E0417] p-3 rounded-4xl cursor-pointer flex items-center mt-4">
+                                <button type="submit" className="bg-[#EFC906] text-[14px] leading-100% font-bold text-[#0E0417] p-3 rounded-4xl cursor-pointer flex items-center mt-4 hover:bg-[#efc806de] transition duration-300">
                                     <span className="w-full">{"გაგზავნა".toUpperCase()}</span>
                                     <Image alt="Send" src={SendBtn} width={32} height={32} />
                                 </button>

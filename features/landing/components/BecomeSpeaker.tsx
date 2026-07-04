@@ -75,7 +75,7 @@ const BecomeSpeaker = () => {
 
             <button
               onClick={openModal}
-              className="border border-[#FED403] bg-[#000000] w-81 h-16 rounded-[77px] z-10 p-3.5 text-[#FED403] text-[18px] font-semibold cursor-pointer flex items-center mt-2 order-3 md:order-0"
+              className="border border-[#FED403] bg-[#000000] w-81 h-16 rounded-[77px] z-10 p-3.5 text-[#FED403] text-[18px] font-semibold cursor-pointer flex items-center mt-2 order-3 md:order-0 hover:bg-[#0c0c0c] transition duration-300"
             >
               <span className="w-full">შეავსე ფორმა</span>
               <Image alt="Arrow" src={OpenForm} width={32} height={32} />
