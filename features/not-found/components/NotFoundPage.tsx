@@ -5,13 +5,13 @@ import Image from "next/image";
 
 export function NotFoundPage() {
   return (
-    <main className="relative w-full overflow-hidden bg-black">
-      <div className="relative mx-auto mt-28 w-[390px] h-[636px] md:w-[768px] md:h-[1015px] lg:w-[1440px] lg:h-[1015px]">
+    <main className="min-w-full h-159 md:h-253.75 overflow-hidden mx-auto bg-black mt-28">
+      <div className="relative mx-auto max-w-360 h-159 md:h-253.75">
         <Image
           src="/assets/images/not-found/png/notFoundBg.png"
           alt="Not Found"
           fill
-          className="object-cover object-center lg:object-contain"
+          className="object-cover object-center"
           priority
         />
 
