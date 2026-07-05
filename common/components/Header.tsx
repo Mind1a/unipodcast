@@ -119,7 +119,7 @@ export default function Header() {
 
   return (
     <header ref={containerRef} className="bg-[#000210] font-sans overflow-x-clip fixed w-full top-0 left-0 z-50">
-      <div className="max-w-300 w-full px-4 py-4 mx-auto flex relative items-center justify-between">
+      <div className="max-w-310 w-full px-4 py-4 xl:px-0 mx-auto flex relative items-center justify-between">
 
         <Link href="/">
           <Image
