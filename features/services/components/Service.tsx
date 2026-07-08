@@ -32,50 +32,68 @@ const Service = () => {
 
       gsap.set(cards.slice(1), { yPercent: 100 });
 
-      const scrollDistancePerCard = 900;
+      const scrollDistancePerCard = 700;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => `+=${(cards.length - 1) * scrollDistancePerCard}`,
+          end: () => cards.length * scrollDistancePerCard,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
         },
       });
 
-      cards.slice(1).forEach((card, i) => {
-        timeline.to(card, { yPercent: 0, ease: "none", duration: 1 }, i);
+      cards.slice(1).forEach((card) => {
+        timeline.to(card, {
+          yPercent: 0,
+          ease: "none",
+          duration: 1,
+        });
       });
+
+      timeline.to(
+        {},
+        {
+          duration: 1,
+        },
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
-
   return (
-    <section className="bg-[#0a0118]">
-      <h2 className="font-display text-center text-3xl font-bold text-white sm:text-4xl">
+    <section className="bg-[#0a0118] mt-20 md:mt-0">
+      <h2 className="font-display text-3xl font-bold justify-center text-white sm:text-4xl mb-21 flex md:hidden">
         <LgvBebasText>სერვისები</LgvBebasText>
       </h2>
-
       <div
         ref={sectionRef}
-        className="relative flex h-screen items-center justify-center overflow-hidden"
+        className="relative hidden md:flex h-screen justify-center overflow-hidden"
       >
+        <h2 className="font-display text-3xl font-bold text-white sm:text-4xl lg:mt-30 mt-20 hidden md:flex">
+          <LgvBebasText>სერვისები</LgvBebasText>
+        </h2>
+
         {services.map((service, index) => (
           <div
             key={service.id}
             ref={(el) => {
               cardsRef.current[index] = el;
             }}
-            className="absolute inset-0 flex items-center justify-center"
+            className="absolute inset-0 items-center justify-center hidden md:flex"
             style={{ zIndex: index + 1 }}
           >
             <ServiceCard service={service} />
           </div>
         ))}
       </div>
+      {services.map((service) => (
+        <div key={service.id} className="flex mb-20 md:hidden">
+          <ServiceCard service={service} />
+        </div>
+      ))}
     </section>
   );
 };
