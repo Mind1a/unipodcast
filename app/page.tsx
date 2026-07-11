@@ -1,10 +1,21 @@
+import NewsSection from "@/features/news/components/NewsSection";
+import Landing from "@/features/landing/components/Landing";
+import Statistics from "@/features/landing/components/Statistics";
+import Marquee from "@/features/landing/components/Marquee";
+import Service from "@/features/services/components/Service";
+import LatestPodcasts from "@/features/landing/components/LatestPodcasts";
+import HeroSection from "@/features/landing/components/hero-section/HeroSection";
+
 const page = () => {
   return (
     <div>
-      <p>Default Noto ტექსტი</p>
-      <p className="font-bold">Noto Bold</p>
-      <p className="font-black">Noto Black</p>
-      <h1 className="font-display">Bebas Title</h1>
+      <HeroSection />
+      <NewsSection />
+      <Service />
+      <Landing />
+      <Marquee />
+      <Statistics />
+      <LatestPodcasts/>
     </div>
   );
 };
