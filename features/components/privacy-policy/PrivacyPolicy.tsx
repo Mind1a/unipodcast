@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
   return (
     <main className="relative  min-h-screen bg-black text-white">
       <Image
-        src="/assets/images/privacy-policy/EllipseTablet.png"
+        src="/assets/images/EllipseTablet.png"
         alt=""
         width={661}
         height={356}
