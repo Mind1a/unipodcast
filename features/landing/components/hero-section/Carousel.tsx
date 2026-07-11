@@ -68,7 +68,7 @@ export default function LogoShape() {
         }}
       >
         <Image
-          src={"/assets/images/icon/microphone-yellow-head.png"}
+          src={"/assets/images/icon/microphone_yellow.svg"}
           alt="microphone"
           width={60}
           height={60}
