@@ -111,21 +111,21 @@ const Rubrics = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 mt-[32px] gap-4">
-          {rubricCards.map((card) => (
+          {rubricCards.map(({ id, image, alt, title }) => (
             <div
-              key={card.id}
+              key={id}
               className="flex flex-col items-center text-center w-full max-w-[358px] md:max-w-[352px] lg:max-w-[612px] mx-auto p-6 lg:py-[56px] hover:bg-[#8413ED] duration-300 rounded-[10px]"
             >
               <Image
-                src={card.image}
-                alt={card.alt}
+                src={image}
+                alt={alt}
                 width={143}
                 height={88}
                 className="w-[143px] h-[88px] object-contain"
               />
 
               <h4 className="font-display font-bold text-[24px] mt-4">
-                <LgvBebasText>{card.title}</LgvBebasText>
+                <LgvBebasText>{title}</LgvBebasText>
               </h4>
             </div>
           ))}
