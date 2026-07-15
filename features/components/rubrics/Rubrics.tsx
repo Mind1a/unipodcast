@@ -1,6 +1,11 @@
 import Image from "next/image";
 import rubricsIntro from "../../../public/assets/images/rubrics/rubricsIntro.jpg";
 
+import rubricsCard1 from "../../../public/assets/images/rubrics/rubricCard1.svg";
+import rubricsCard2 from "../../../public/assets/images/rubrics/rubricCard2.svg";
+import rubricsCard3 from "../../../public/assets/images/rubrics/rubricCard3.svg";
+import rubricsCard4 from "../../../public/assets/images/rubrics/rubricCard4.svg";
+
 import LgvBebasText from "@/features/news/components/LgvBebasText";
 
 import Link from "next/link";
@@ -49,11 +54,73 @@ const Rubrics = () => {
 
         <Image
           src={rubricsIntro}
-          alt="გუნდის თანამშრომლობის ილუსტრაცია"
+          alt="უნიპოდკასტის ვიდეო"
           width={629}
           height={431}
           className="rounded-[44px] w-[358px] h-[321px] md:w-[323px] lg:w-[629px] lg:h-[431px] object-cover"
         />
+      </section>
+      {/* ---------- Second section ---------- */}
+      <section className="flex flex-col w-full max-w-[1288px] ">
+        <h3 className="font-bold text-[24px] mb-4 leading-[36px]">რუბრიკები</h3>
+        <p className="leading-[26px]">
+          რუბრიკები ეფუძნება ილიაუნის სკოლა/ფაკულტეტებს, მათ საჭიროებებსა და
+          თემატიკას. 
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-[32px] gap-4">
+          <div className="flex flex-col items-center text-center w-full max-w-[358px] md:max-w-[352px] lg:max-w-[612px] mx-auto p-6 lg:py-[56px]">
+            <Image
+              src={rubricsCard1}
+              alt="ტექნოლოგიები და კარიერა"
+              width={143}
+              height={88}
+              className="w-[143px] h-[88px] object-contain"
+            />
+            <h4 className="font-display font-bold text-[24px] mt-4">
+              <LgvBebasText>ტექნოლოგიები და კარიერა</LgvBebasText>
+            </h4>
+          </div>
+
+          <div className="flex flex-col items-center text-center w-full max-w-[358px] md:max-w-[352px] lg:max-w-[612px] mx-auto p-6 lg:py-[56px]">
+            <Image
+              src={rubricsCard2}
+              alt="ტექნოლოგიები და კარიერა"
+              width={143}
+              height={88}
+              className="w-[143px] h-[88px] object-contain"
+            />
+            <h4 className="font-display font-bold text-[24px] mt-4">
+              <LgvBebasText>სტუდენტური ცხოვრება</LgvBebasText>
+            </h4>
+          </div>
+
+          <div className="flex flex-col items-center text-center w-full max-w-[358px] md:max-w-[352px] lg:max-w-[612px] mx-auto p-6 lg:py-[56px]">
+            <Image
+              src={rubricsCard3}
+              alt="ტექნოლოგიები და კარიერა"
+              width={143}
+              height={88}
+              className="w-[143px] h-[88px] object-contain"
+            />
+            <h4 className="font-display font-bold text-[24px] mt-4">
+              <LgvBebasText>განათლება და კულტურა</LgvBebasText>
+            </h4>
+          </div>
+
+          <div className="flex flex-col items-center text-center w-full max-w-[358px] md:max-w-[352px] lg:max-w-[612px] mx-auto p-6 lg:py-[56px]">
+            <Image
+              src={rubricsCard4}
+              alt="ტექნოლოგიები და კარიერა"
+              width={143}
+              height={88}
+              className="w-[143px] h-[88px] object-contain"
+            />
+            <h4 className="font-display font-bold text-[24px] mt-4">
+              <LgvBebasText>ზოგადი</LgvBebasText>
+            </h4>
+          </div>
+        </div>
       </section>
     </section>
   );
