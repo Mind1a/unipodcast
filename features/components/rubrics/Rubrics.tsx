@@ -46,11 +46,11 @@ const rubricCards: RubricCard[] = [
 
 const Rubrics = () => {
   return (
-    <section className="flex flex-col items-center font-sans lg:my-[100px] md:my-12 my-8 lg:gap-[110px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0 text-[#FFFFFF]">
+    <section className="flex flex-col items-center font-sans my-[180px] lg:gap-[110px] md:gap-12 gap-10 px-4 md:px-6 md:py-12 lg:px-8 lg:py-0 text-[#FFFFFF]">
       {/* ---------- First section ---------- */}
       <section
         aria-labelledby="unipodcast-rubrics-heading"
-        className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1288px] gap-8 lg:gap-12 md:py-12"
+        className="flex flex-col md:flex-row lg:items-center lg:justify-between w-full max-w-[1288px] gap-8 lg:gap-12"
       >
         <div className="w-full max-w-[548px]">
           <h2
@@ -91,7 +91,7 @@ const Rubrics = () => {
           alt="უნიპოდკასტის ვიდეო"
           width={629}
           height={431}
-          className="rounded-[44px] w-[358px] h-[321px] md:w-[323px] lg:w-[629px] lg:h-[431px] object-cover"
+          className="rounded-[44px] h-[321px] md:w-[323px] lg:w-[629px] lg:h-[431px] object-cover"
         />
       </section>
       {/* ---------- Second section ---------- */}

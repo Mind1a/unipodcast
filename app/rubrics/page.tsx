@@ -2,7 +2,7 @@ import Rubrics from "@/features/components/rubrics/Rubrics";
 
 const page = () => {
   return (
-    <div className="min-h-screen">
+    <div>
       <Rubrics />
     </div>
   );
