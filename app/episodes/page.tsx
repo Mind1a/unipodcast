@@ -1,8 +1,8 @@
+import Pagination from '@/common/components/Pagination'
 import SearchField from '@/common/components/SearchField'
 import Card from '@/features/components/episodes/Card'
 import { episodesData } from '@/features/components/episodes/EpisodesData'
 import LgvBebasText from '@/features/news/components/LgvBebasText'
-import React from 'react'
 
 const page = () => {
   return (
@@ -15,7 +15,6 @@ const page = () => {
         </h2>
 
 
-        {/* Search */}
         <SearchField />
 
 
@@ -27,6 +26,9 @@ const page = () => {
               )
             })
           }
+        </div>
+        <div className='flex items-center justify-center my-12'>
+          <Pagination />
         </div>
       </div>
     </div>
