@@ -55,7 +55,7 @@ const Footer = () => {
         }}
       />
 
-      <div className="mt-8 mb-6 h-11 w-full max-w-81.5 text-white md:mb-8 md:h-5.5 md:max-w-180 lg:mt-6 lg:max-w-310 text-[16px] font-sans">
+      <div className="mt-8 mb-6 h-11 w-full max-w-81.5 text-[rgba(255,255,255,1)] md:mb-8 md:h-5.5 md:max-w-180 lg:mt-6 lg:max-w-310 text-[16px] font-sans">
         <p>
           Copyright <span className="text-[#4F5448] font-bold"> ©</span> 2026
           UniPodcast. ყველა უფლება დაცულია
