@@ -1,5 +1,8 @@
+"use client"
 import LgvBebasText from "@/features/news/components/LgvBebasText"
+import { LatestVideo, useLatestVideos } from "@/hooks/useLatestVideos"
 import Image from "next/image"
+import Link from "next/link"
 import type { ReactNode } from "react"
 
 const PATH_DESKTOP_TOP_RIGHT =
@@ -13,30 +16,8 @@ const PATH_MOBILE_BOTTOM_RIGHT =
 
 type CardVariant = "topRight" | "topLeft"
 
-type Podcast = {
-  episode: string
-  duration: string
-  category: string
-  alt: string
-  variant: CardVariant
-}
 
-const PODCASTS: Podcast[] = [
-  {
-    episode: "ეპიზოდი #13",
-    duration: "16:56წთ",
-    category: "განათლება",
-    alt: "Episode 13 Thumbnail",
-    variant: "topRight",
-  },
-  {
-    episode: "ეპიზოდი #6",
-    duration: "16:56წთ",
-    category: "სტუდენტური ცხოვრება",
-    alt: "Episode 6 Thumbnail",
-    variant: "topLeft",
-  },
-]
+
 
 function ClockIcon({ className }: { className?: string }) {
   return (
@@ -138,17 +119,30 @@ function ViewAllButton() {
   )
 }
 
-function PodcastCard({ podcast, index }: { podcast: Podcast; index: number }) {
+function PodcastCard({ video, index }: { video: LatestVideo; index: number }) {
   const isSecondCard = index === 1
   const imageFirstOnDesktop = !isSecondCard
+  const variant: CardVariant = isSecondCard ? "topLeft" : "topRight"
 
-  
+
+  const getImageUrl = (img?: string) => {
+    if (!img || img === "string") return "/images/landing/podcast1.svg"
+    if (img.startsWith("http://") || img.startsWith("https://")) {
+      return img
+    }
+
+    const cleanPath = img.startsWith("/") ? img : `/${img}`
+    return `https://unipodcast-final.onrender.com/static/uploads/videos/${cleanPath}`
+  }
+
+  const imageSrc = getImageUrl(video.img)
+
   return (
     <article
       className="w-full  shrink-0  aspect-358/208 sm:aspect-602/320 sm:min-w-85  sm:max-w-145 sm:snap-center xl:h-auto xl:w-full xl:min-w-0 xl:max-w-150.5 xl:aspect-602/320"
     >
       <CardShape
-        variant={podcast.variant}
+        variant={variant}
         contentClassName="relative flex-row items-center  pt-[clamp(14px,3vw,19px)]
 pb-[clamp(10px,2vw,12px)]
  sm:gap-2 sm:py-8 px-6"
@@ -156,8 +150,8 @@ pb-[clamp(10px,2vw,12px)]
         <Image
           width={200}
           height={177}
-          src="/images/landing/podcast1.svg"
-          alt={podcast.alt}
+          src={imageSrc}
+          alt={video.title}
           className={`shrink-0 rounded-2xl border border-[#FED403]/25 object-cover  w-[70%] sm:order-2 sm:w-[70%] sm:aspect-270/199 sm:rounded-3xl xl:rounded-3xl xl:w-87.5 xl:h-62.25 xl:aspect-auto ${
             imageFirstOnDesktop ? "order-1 xl:order-1" : "order-1 xl:order-2"
           }`}
@@ -171,13 +165,13 @@ ml-[clamp(6px,2vw,12px)]   flex-col justify-start text-white sm:order-1  xl:just
               : "text-left"
             } ${imageFirstOnDesktop ? "order-2 xl:order-2" : "order-2 xl:order-1"}`}
         >
-          <h3 className="font-medium text-[clamp(13px,3.5vw,20px)] text-nowrap   leading-[110%] mb-[clamp(4px,1vw,8px)] ">
-            {podcast.episode}
+          <h3 className="font-medium text-[clamp(13px,3.5vw,20px)]   leading-[110%] mb-[clamp(4px,1vw,8px)] ">
+            {video.title}
           </h3>
 
           <div className=" text-[clamp(13px,3vw,16px)] flex items-center gap-1  leading-[100%] font-medium text-[#FFFFFFB2] mb-[clamp(8px,2vw,16px)] sm:gap-1.5">
             <ClockIcon className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-            <span >{podcast.duration}</span>
+            <span >{video.duration}</span>
           </div>
 
           <div
@@ -187,14 +181,16 @@ xl:mb-5 flex flex-col gap-0.5 sm:mb-14 sm:gap-1  ${isSecondCard ? "xl:items-end"
           >
             <span className="text-[clamp(14px,3.5vw,14px)] text-[#FFFFFFB2]">კატეგორია:</span>
             <span className="text-[clamp(14px,3.5vw,14px)] xl:text-nowrap font-bold text-white ">
-              {podcast.category}
+              {video.category_name}
             </span>
           </div>
 
-          <button
-            type="button"
+          <Link
+            href={video.video_link}
+            target="_blank"
             className={`hidden h-11 w-fit cursor-pointer group/button hover:text-black  items-center gap-3 rounded-full border border-[#3D3302] bg-black pl-6 pr-3 text-sm font-semibold text-[#FED403] transition-all duration-300 hover:bg-[#FED403] xl:flex ${isSecondCard ? "xl:ml-auto" : ""
               }`}
+            rel="noopener noreferrer"
           >
             <span className="font-bold text-[16px] leading-[100%] ">მოუსმინე</span>
             <span className="flex w-5.5 h-5.5 shrink-0 items-center justify-center  rounded-full border border-[#FED403] group-hover/button:border-black">
@@ -209,12 +205,14 @@ xl:mb-5 flex flex-col gap-0.5 sm:mb-14 sm:gap-1  ${isSecondCard ? "xl:items-end"
                 />
               </svg>
             </span>
-          </button>
+          </Link>
         </div>
 
-        <button
-          type="button"
+        <Link
+          href={video.video_link}
+          target="_blank"
           aria-label="მოუსმინე"
+          rel="noopener noreferrer"
           className="absolute group/button hover:bg-[#FED403] w-[clamp(40px,12vw,50px)] h-[clamp(40px,12vw,50px)] bottom-0 left-[clamp(80px,5vw,100px)] hidden  cursor-pointer items-center justify-center rounded-full border border-[#FED403] bg-black transition-colors duration-300  sm:flex xl:hidden"
         >
           <span className="flex h-7 w-7  items-center justify-center rounded-full  ">
@@ -229,11 +227,13 @@ xl:mb-5 flex flex-col gap-0.5 sm:mb-14 sm:gap-1  ${isSecondCard ? "xl:items-end"
               />
             </svg>
           </span>
-        </button>
+        </Link>
 
-        <button
-          type="button"
+        <Link
+          href={video.video_link}
+          target="_blank"
           aria-label="მოუსმინე"
+          rel="noopener noreferrer"
           className="absolute group/button hover:bg-[#FED403]  right-[clamp(25px,5vw,32px)] bottom-[clamp(2px,2vw,0px)] flex w-[clamp(40px,12vw,80px)]
 h-[clamp(40px,12vw,80px)] cursor-pointer items-center justify-center rounded-full border border-[#FED403]  transition-colors duration-300  sm:hidden"
         >
@@ -250,13 +250,23 @@ h-[clamp(34px,8vw,40px)] items-center justify-center rounded-full   ">
               />
             </svg>
           </span>
-        </button>
+        </Link>
       </CardShape>
     </article>
   )
 }
 
 export default function LatestPodcasts() {
+  const {
+    data: videos, isLoading, isError
+  } = useLatestVideos()
+
+  if (isLoading) {
+    return <div className="text-center py-20 text-white">იტვირთება...</div>
+  }
+  if (isError || !videos) {
+    return <div className="text-center py-20 text-red-500">მონაცემების ჩატვირთვა ვერ მოხერხდა.</div>
+  }
   return (
     <section className="my-20 w-full sm:my-30">
       <div className="mx-auto flex w-full max-w-310 flex-col px-4 xl:px-0">
@@ -266,8 +276,8 @@ export default function LatestPodcasts() {
 
         <div className="relative xl:min-h-80">
           <div className="flex w-full  flex-col gap-6 sm:flex-row sm:gap-4 sm:overflow-x-auto sm:pb-6 sm:snap-x sm:snap-mandatory scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden xl:items-start xl:justify-between xl:gap-8 xl:overflow-visible xl:pb-0">
-            {PODCASTS.map((podcast, index) => (
-              <PodcastCard key={podcast.episode} podcast={podcast} index={index} />
+            {videos.slice(0, 2).map((video, index) => (
+              <PodcastCard key={video.id} video={video} index={index} />
             ))}
           </div>
 
