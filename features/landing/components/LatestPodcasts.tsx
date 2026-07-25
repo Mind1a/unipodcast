@@ -1,6 +1,7 @@
 "use client"
 import LgvBebasText from "@/features/news/components/LgvBebasText"
 import { LatestVideo, useLatestVideos } from "@/hooks/useLatestVideos"
+import { API_BASE_URL } from "@/lib/apiClient"
 import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
@@ -130,9 +131,8 @@ function PodcastCard({ video, index }: { video: LatestVideo; index: number }) {
     if (img.startsWith("http://") || img.startsWith("https://")) {
       return img
     }
-
     const cleanPath = img.startsWith("/") ? img : `/${img}`
-    return `https://unipodcast-final.onrender.com/static/uploads/videos/${cleanPath}`
+    return `${API_BASE_URL}/static/uploads/videos${cleanPath}`
   }
 
   const imageSrc = getImageUrl(video.img)
@@ -181,7 +181,7 @@ xl:mb-5 flex flex-col gap-0.5 sm:mb-14 sm:gap-1  ${isSecondCard ? "xl:items-end"
           >
             <span className="text-[clamp(14px,3.5vw,14px)] text-[#FFFFFFB2]">კატეგორია:</span>
             <span className="text-[clamp(14px,3.5vw,14px)] xl:text-nowrap font-bold text-white ">
-              {video.category_name}
+              {video.category}
             </span>
           </div>
 
@@ -260,6 +260,7 @@ export default function LatestPodcasts() {
   const {
     data: videos, isLoading, isError
   } = useLatestVideos()
+  console.log(videos)
 
   if (isLoading) {
     return <div className="text-center py-20 text-white">იტვირთება...</div>

@@ -1,3 +1,4 @@
+import { apiGet } from "@/lib/apiClient";
 import { useQuery } from "@tanstack/react-query";
 
 export interface LatestVideo {
@@ -11,24 +12,15 @@ export interface LatestVideo {
   video_link: string;
   in_slider: number;
   category_id: number;
-  category_name: string
+  category: string;
 }
 
-const fetchLatestVideos = async (): Promise<LatestVideo[]> => {
-  const response = await fetch(
-    "https://unipodcast-final.onrender.com/api/latest_videos",
-  );
-  if (!response.ok) {
-    throw new Error(`Failed to fetch latest videos: ${response.status} ${response.statusText}`);
-  }
-
-  return response.json()
-};
+const fetchLatestVideos = () => apiGet<LatestVideo[]>("/api/latest_videos");
 
 export const useLatestVideos = () => {
   return useQuery({
     queryKey: ["latest-videos"],
     queryFn: fetchLatestVideos,
-    staleTime: 1000 * 60 * 5
-  })
-}
+    staleTime: 1000 * 60 * 5,
+  });
+};
