@@ -23,12 +23,12 @@ const Team = () => {
           <LgvBebasText>გაიცანი ჩვენი გუნდი</LgvBebasText>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="flex gap-5 overflow-x-auto no-scrollbar scroll-smooth pb-4 snap-x snap-mandatory">
           {team.map(({ id, name_surname, role, img, in_link }) => (
             <article
               aria-label={`Team member: ${name_surname}`}
               key={id}
-              className="flex flex-col group overflow-hidden rounded-2xl  transition-transform duration-300 group-hover:scale-[1.03] focus-within:scale-[1.03] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#8A2BE2]"
+              className="flex flex-col flex-shrink-0 w-[295px] snap-start group overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-[1.03] focus-within:scale-[1.03] focus-within:outline-none focus-within:ring-2 focus-within:ring-[#8A2BE2]"
             >
               <div className="relative w-full h-[185px] overflow-hidden">
                 <Image
