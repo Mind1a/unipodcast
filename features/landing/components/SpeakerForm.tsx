@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { speakerFormSchema, SpeakerFormValues } from "../schemas/speakerFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
@@ -12,16 +12,6 @@ import SendBtn from "../../../public/images/landing/SendBtn.svg";
 import MessageRead from "../../../public/images/landing/MessageRead.svg";
 import LgvBebasText from "@/features/news/components/LgvBebasText";
 import { useMessage } from "../hooks/useMessage";
-
-const schema = z.object({
-    name: z.string().min(2, "უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს"),
-    lastname: z.string().min(2, "უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს"),
-    email: z.string().email("ჩაწერეთ სწორი იმეილი"),
-    number: z.string().min(9, "ჩაწერეთ მინიმუმ 9 სიმბოლო").max(9, "ჩაწერეთ მაქსიმუმ 9 სიმბოლო"),
-    text: z.string().min(5, "ჩაწერეთ მინიმუმ 5 სიმბოლო"),
-});
-
-type FormData = z.infer<typeof schema>;
 
 const SpeakerForm = ({
     isOpen,
@@ -33,7 +23,7 @@ const SpeakerForm = ({
     const [submitted, setSubmitted] = useState(false);
     const { mutate: sendMessage, isPending } = useMessage();
 
-    const { register, watch, handleSubmit, reset, setError, clearErrors, formState: { errors }, } = useForm<FormData>({ resolver: zodResolver(schema), });
+    const { register, watch, handleSubmit, reset, setError, clearErrors, formState: { errors }, } = useForm<SpeakerFormValues>({ resolver: zodResolver(speakerFormSchema), });
 
     const values = watch();
 
@@ -41,7 +31,7 @@ const SpeakerForm = ({
         onClose();
     };
 
-    function onSubmit(data: FormData) {
+    function onSubmit(data: SpeakerFormValues) {
         clearErrors("root");
 
         sendMessage(
