@@ -18,7 +18,7 @@ const schema = z.object({
     lastname: z.string().min(2, "უნდა შეიცავდეს მინიმუმ 2 სიმბოლოს"),
     email: z.string().email("ჩაწერეთ სწორი იმეილი"),
     number: z.string().min(9, "ჩაწერეთ მინიმუმ 9 სიმბოლო").max(9, "ჩაწერეთ მაქსიმუმ 9 სიმბოლო"),
-    text: z.string().min(1, "ჩაწერეთ მინიმუმ 1 სიმბოლო"),
+    text: z.string().min(5, "ჩაწერეთ მინიმუმ 5 სიმბოლო"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -31,9 +31,9 @@ const SpeakerForm = ({
     onClose: () => void;
 }) => {
     const [submitted, setSubmitted] = useState(false);
-    const { mutateAsync: sendMessage } = useMessage();
+    const { mutate: sendMessage, isPending } = useMessage();
 
-    const { register, watch, handleSubmit, reset, formState: { errors }, } = useForm<FormData>({ resolver: zodResolver(schema), });
+    const { register, watch, handleSubmit, reset, setError, clearErrors, formState: { errors }, } = useForm<FormData>({ resolver: zodResolver(schema), });
 
     const values = watch();
 
@@ -41,20 +41,32 @@ const SpeakerForm = ({
         onClose();
     };
 
-    async function onSubmit(data: FormData) {
-        try {
-            await sendMessage({
+    function onSubmit(data: FormData) {
+        clearErrors("root");
+
+        sendMessage(
+            {
                 name: data.name,
                 surname: data.lastname,
                 text: data.text,
                 email: data.email,
                 phone_number: data.number,
-            });
+            },
+            {
+                onSuccess: () => {
+                    setSubmitted(true);
+                },
+                onError: (error: Error) => {
+                    const errorMessage =
+                        error.message || "Something went wrong";
 
-            setSubmitted(true);
-        } catch (error) {
-            console.error("Failed to send message:", error);
-        }
+                    setError("root", {
+                        type: "server",
+                        message: errorMessage,
+                    });
+                },
+            },
+        );
     }
 
     return (
@@ -183,8 +195,25 @@ const SpeakerForm = ({
                                     {errors.text && (<p className="text-[14px] text-red-400">{errors.text.message}</p>)}
                                 </div>
 
-                                <button type="submit" className="bg-[#EFC906] text-[14px] leading-100% font-bold text-[#0E0417] p-3 rounded-4xl cursor-pointer flex items-center mt-4 hover:bg-[#efc806de] transition duration-300">
-                                    <span className="w-full">{"გაგზავნა".toUpperCase()}</span>
+                                {/* Error */}
+                                {errors.root?.message && (
+                                    <p
+                                        role="alert"
+                                        className="rounded-lg bg-red-100 p-3 text-center text-sm text-red-700"
+                                    >
+                                        {errors.root.message}
+                                    </p>
+                                )}
+
+                                <button
+                                    type="submit"
+                                    disabled={isPending}
+                                    className="bg-[#EFC906] text-[14px] leading-100% font-bold text-[#0E0417] p-3 rounded-4xl cursor-pointer flex items-center mt-4 hover:bg-[#efc806de] transition duration-300 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                    <span className="w-full">
+                                        {isPending ? "იგზავნება..." : "გაგზავნა"}
+                                    </span>
+
                                     <Image alt="Send" src={SendBtn} width={32} height={32} />
                                 </button>
                             </form>
