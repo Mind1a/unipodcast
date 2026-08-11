@@ -32,7 +32,7 @@ const Service = () => {
 
       gsap.set(cards.slice(1), { yPercent: 100 });
 
-      const scrollDistancePerCard = 700;
+      const scrollDistancePerCard = 1600;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
