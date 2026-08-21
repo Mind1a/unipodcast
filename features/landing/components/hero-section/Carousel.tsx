@@ -26,7 +26,7 @@ export default function LogoShape() {
 
   const scrollTo = useCallback(
     (index: number) => emblaApi && emblaApi.scrollTo(index),
-    [emblaApi],
+    [emblaApi]
   );
 
   useEffect(() => {
@@ -39,10 +39,10 @@ export default function LogoShape() {
 
   return (
     <div
-      className="relative w-full max-w-[476px] ms-auto lg:block hidden"
+      className="relative w-full max-w-[476px] ms-auto lg:block hidden group"
       style={{ aspectRatio: "476 / 446" }}
     >
-      {/* border shape (your exact svg, scaled to fill) */}
+      {/* border shape */}
       <svg
         className="absolute inset-0 w-full h-full"
         viewBox="0 0 476 446"
@@ -56,11 +56,25 @@ export default function LogoShape() {
         />
       </svg>
 
-      {/* mic circle sitting in the notch (notch spans y 161.7–288.5 of a 446 viewBox, x around 404–475) */}
+      {/* mic circle */}
+      <div
+        className="absolute z-0 rounded-full pointer-events-none opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+        style={{
+          width: "35px",
+          height: "35px",
+          left: "94%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "#8A2BE2",
+          filter: "blur(8px)",
+        }}
+      />
+
+      {/* mic circle sitting in the notch */}
       <div
         className="absolute z-10 flex items-center justify-center"
         style={{
-          width: "14%",
+          width: "13%",
           aspectRatio: "1 / 1",
           left: "94%",
           top: "50%",
@@ -68,10 +82,18 @@ export default function LogoShape() {
         }}
       >
         <Image
-          src={"/assets/images/icon/microphone_yellow.svg"}
+          src="/assets/images/icon/microphone_purple.svg"
           alt="microphone"
           width={60}
           height={60}
+          className="w-[60px] h-[60px] object-fill group-hover:hidden"
+        />
+        <Image
+          src="/assets/images/icon/microphone-glow.svg"
+          alt="microphone"
+          width={60}
+          height={60}
+          className="w-[60px] h-[60px] object-fill hidden group-hover:block"
         />
       </div>
 

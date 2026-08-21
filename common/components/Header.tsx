@@ -42,34 +42,61 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  useGSAP(() => {
-    mobileTl.current = gsap.timeline({ paused: true })
-      .to(".mobile-only-nav", {
-        x: "0%",
-        duration: 0.4,
-        ease: "power3.inOut",
-      }, 0)
-      .to(line1Ref.current, { y: 10, rotate: 45, duration: 0.3, ease: "power2.inOut" }, 0)
-      .to(line2Ref.current, { opacity: 0, scaleX: 0, duration: 0.2, ease: "power2.inOut" }, 0)
-      .to(line3Ref.current, { y: -10, rotate: -45, duration: 0.3, ease: "power2.inOut" }, 0);
-  }, { scope: containerRef });
+  useGSAP(
+    () => {
+      mobileTl.current = gsap
+        .timeline({ paused: true })
+        .to(
+          ".mobile-only-nav",
+          {
+            x: "0%",
+            duration: 0.4,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        .to(
+          line1Ref.current,
+          { y: 10, rotate: 45, duration: 0.3, ease: "power2.inOut" },
+          0
+        )
+        .to(
+          line2Ref.current,
+          { opacity: 0, scaleX: 0, duration: 0.2, ease: "power2.inOut" },
+          0
+        )
+        .to(
+          line3Ref.current,
+          { y: -10, rotate: -45, duration: 0.3, ease: "power2.inOut" },
+          0
+        );
+    },
+    { scope: containerRef }
+  );
 
-  useGSAP(() => {
-    if (window.innerWidth < 1024) return;
+  useGSAP(
+    () => {
+      if (window.innerWidth < 1024) return;
 
-    const activeIndex = navLinks.findIndex((link) => link.href === pathname);
-    const activeElement = linkRefs.current[activeIndex];
+      const activeIndex = navLinks.findIndex((link) => link.href === pathname);
+      const activeElement = linkRefs.current[activeIndex];
 
-    if (activeElement && indicatorRef.current) {
-      gsap.set(indicatorRef.current, {
-        left: activeElement.offsetLeft,
-        width: activeElement.offsetWidth,
-        opacity: 1,
-      });
-    }
-  }, { dependencies: [pathname], scope: containerRef });
+      if (activeElement && indicatorRef.current) {
+        gsap.set(indicatorRef.current, {
+          left: activeElement.offsetLeft,
+          width: activeElement.offsetWidth,
+          opacity: 1,
+        });
+      }
+    },
+    { dependencies: [pathname], scope: containerRef }
+  );
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, index: number) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    index: number
+  ) => {
     if (pathname === href) return;
 
     if (window.innerWidth >= 1024) {
@@ -94,7 +121,9 @@ export default function Header() {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsMenuOpen(false);
-        const activeIndex = navLinks.findIndex((link) => link.href === pathname);
+        const activeIndex = navLinks.findIndex(
+          (link) => link.href === pathname
+        );
         const activeElement = linkRefs.current[activeIndex];
         if (activeElement && indicatorRef.current) {
           gsap.set(indicatorRef.current, {
@@ -118,9 +147,11 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header ref={containerRef} className="bg-[#000210] font-sans overflow-x-clip fixed w-full top-0 left-0 z-50">
+    <header
+      ref={containerRef}
+      className="bg-[#0F011D] font-sans overflow-x-clip fixed w-full top-0 left-0 z-50"
+    >
       <div className="max-w-310 w-full px-4 py-4 xl:px-0 mx-auto flex relative items-center justify-between">
-
         <Link href="/">
           <Image
             width={108}
@@ -144,10 +175,11 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href, index)}
-                  className={`duration-200 text-[16px] font-medium ${pathname === link.href
+                  className={`duration-200 text-[16px] font-medium ${
+                    pathname === link.href
                       ? "text-[#FCF8FF]"
                       : "text-[#A5A1B8] hover:text-[#FCF8FF]"
-                    }`}
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -186,10 +218,11 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`duration-200 text-[22px] font-bold leading-[100%] ${pathname === link.href
-                      ? "text-[#FED403]"
-                      : "text-[#A5A1B8] hover:text-[#FCF8FF]"
-                      }`}
+                    className={`duration-200 text-[22px] font-bold leading-[100%] ${
+                      pathname === link.href
+                        ? "text-[#FED403]"
+                        : "text-[#A5A1B8] hover:text-[#FCF8FF]"
+                    }`}
                   >
                     {link.label}
                   </Link>
@@ -223,11 +256,19 @@ export default function Header() {
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="w-8 h-8 cursor-pointer flex flex-col justify-center gap-1.5 lg:hidden relative z-60"
         >
-          <span ref={line1Ref} className="h-1 w-full bg-white rounded-full origin-center"></span>
-          <span ref={line2Ref} className="h-1 w-full bg-white rounded-full origin-center"></span>
-          <span ref={line3Ref} className="h-1 w-full bg-white rounded-full origin-center"></span>
+          <span
+            ref={line1Ref}
+            className="h-1 w-full bg-white rounded-full origin-center"
+          ></span>
+          <span
+            ref={line2Ref}
+            className="h-1 w-full bg-white rounded-full origin-center"
+          ></span>
+          <span
+            ref={line3Ref}
+            className="h-1 w-full bg-white rounded-full origin-center"
+          ></span>
         </button>
-
       </div>
     </header>
   );
