@@ -4,16 +4,16 @@ import LgvBebasText from "@/features/news/components/LgvBebasText";
 
 export default function HeroSection() {
   return (
-    <section className="bg-[#0F011D] max-w-300 w-full px-4 py-4 mx-auto overflow-hidden pt-50">
-      <div className="">
-        <h2 className="text-white font-display text-[20px] md:text-[32px] lg:text-[61px] font-bold leading-snug mb-10">
+    <section className="bg-[#0F011D] max-w-310 w-full px-4 xl:px-0 py-4 mx-auto overflow-hidden pt-50">
+      <div>
+        <h2 className="max-w-255 text-white font-display text-[20px] md:text-[32px] lg:text-[61px] font-bold leading-snug mb-10">
           <LgvBebasText>სივრცე სადაც</LgvBebasText>
           <Image
             src={"/assets/images/hero-sentence-logo-1.svg"}
             alt="microphone"
             width={40}
             height={40}
-            className="inline-block align-middle mx-2.5"
+            className="inline-block align-middle mx-2.5 w-5 h-5 md:w-10 md:h-10"
           />
           <LgvBebasText>ცოდნა, ინსპირაცია და</LgvBebasText>
           <Image
@@ -21,7 +21,7 @@ export default function HeroSection() {
             alt="microphone"
             width={126}
             height={35}
-            className="inline-block align-middle mx-2.5"
+            className="inline-block align-middle mx-2.5 w-[44px] h-[11px] md:w-[126px] md:h-[35px]"
           />
           <LgvBebasText>სტუდენტური ცხოვრება ერთ ხმად ერთიანდება</LgvBebasText>
         </h2>
