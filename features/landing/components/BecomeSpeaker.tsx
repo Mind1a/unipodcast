@@ -8,12 +8,87 @@ import OpenForm from "../../../public/images/landing/OpenFormArrow.svg";
 
 import SpeakerForm from "./SpeakerForm";
 import LgvBebasText from "@/features/news/components/LgvBebasText";
+import gsap from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, MotionPathPlugin, ScrollTrigger);
 
 const BecomeSpeaker = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const isOpen = searchParams.get("modal") === "speakerForm";
+
+  // making animation
+  const rocketRef = useRef<HTMLImageElement>(null);
+  const flameRef = useRef<SVGPathElement>(null);
+  const animationContainerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const rocket = rocketRef.current;
+      const flame = flameRef.current;
+
+      if (!rocket || !flame) return;
+
+      const flameLength = flame.getTotalLength();
+
+      gsap.set(flame, {
+        strokeDasharray: flameLength,
+        strokeDashoffset: flameLength,
+        opacity: 0,
+      });
+
+      gsap.set(rocket, {
+        opacity: 0,
+        scale: 0.85,
+        rotate: 30,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: animationContainerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      tl.to(rocket, {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+      })
+        .to(
+          flame,
+          {
+            opacity: 1,
+            strokeDashoffset: 0,
+            duration: 3,
+            ease: "power3.inOut",
+          },
+          "<",
+        )
+        .to(
+          rocket,
+          {
+            duration: 3,
+            ease: "power3.inOut",
+            rotate: -10,
+            motionPath: {
+              path: "#rocket-motion-path",
+              align: "#rocket-motion-path",
+              alignOrigin: [0.5, 0.5],
+            },
+          },
+          "<",
+        );
+    },
+    { scope: animationContainerRef },
+  );
 
   const openModal = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -51,13 +126,53 @@ const BecomeSpeaker = () => {
             <div className="hidden md:block bg-[#8A2BE2] w-50 lg:h-5.75 md:h-15 h-30 absolute lg:-bottom-10 md:-bottom-27.5 lg:left-0 left-120 rounded-[137px] lg:blur-[100px] blur-[80px]"></div>
           </div>
 
-          <Image
+          {/* <Image
             alt="Rocket"
             src={Rocket}
             width={271.58}
             height={248}
             className="h-auto w-33.25 md:w-37.25 lg:w-[271.58px]"
-          />
+          /> */}
+
+          <div
+            ref={animationContainerRef}
+            className="relative lg:w-[500px]  md:w-[400px] w-full lg:h-[280px] md:h-[230px] h-[180px]"
+          >
+            {/* Motion path */}
+            <svg
+              className="absolute inset-0 w-full h-full pointer-events-none overflow-visible"
+              viewBox="0 0 500 280"
+              preserveAspectRatio="none"
+            >
+              {/* yellow flame is hidden  At this moment  (classname hidden)  */}
+              <path
+                id="flame-path"
+                ref={flameRef}
+                d="M -500 350 C 300 215, 220 190, 285 150 C 335 120, 350 85, 390 55"
+                fill="none"
+                stroke="#FEDE17"
+                strokeWidth="30"
+                strokeLinecap="round"
+                className="hidden"
+              />
+              <path
+                id="rocket-motion-path"
+                d="M -500 350 C 300 215, 220 190, 285 150 C 335 120, 350 85, 390 55"
+                fill="none"
+                stroke="transparent"
+                strokeWidth="2"
+              />
+            </svg>
+            {/* Rocket */}
+            <Image
+              ref={rocketRef}
+              alt="Rocket"
+              src={Rocket}
+              width={271.58}
+              height={248}
+              className="absolute w-[170px] md:w-[200px] lg:w-[271.58px] h-auto z-10"
+            />
+          </div>
 
           <div className="bg-[#8A2BE2] w-50 lg:h-5.75 md:h-15 h-25 absolute lg:-bottom-10 md:-bottom-27.5 top-40 lg:left-0 md:left-120 right-0 rounded-[137px] lg:blur-[100px] blur-[90px]"></div>
         </div>
@@ -94,7 +209,7 @@ const BecomeSpeaker = () => {
             src={Support}
             width={421}
             height={400}
-            className="md:absolute block lg:-top-19 top-0 lg:right-22.75 right-0 lg:w-105.25 w-89.75 lg:h-100 h-64.5 order-2 md:order-0"
+            className="md:absolute block lg:-top-19 top-0 lg:right-22.75 right-0 lg:w-105.25 w-89.75 lg:h-100 h-64.5 order-2 md:order-0 z-10"
           />
         </div>
       </div>

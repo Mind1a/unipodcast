@@ -1,3 +1,5 @@
+import Image from "next/image";
+import bgImage from "../../../public/assets/images/statistic/Group.svg";
 const statistics = [
   { value: "10", label: "ეპიზოდი" },
   { value: "5", label: "პარტნიორი" },
@@ -7,8 +9,11 @@ const statistics = [
 
 const Statistics = () => {
   return (
-    <section className="w-full bg-black py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto grid max-w-[1237px] grid-cols-2 gap-x-4 gap-y-12 px-4 sm:gap-x-8 sm:px-6 md:grid-cols-4 md:gap-y-0">
+    <section
+      className="w-full relative bg-[#0F011D] py-12 sm:py-16 lg:py-20 bg-size-[1000px_300px]
+  bg-center bg-no-repeat lg:min-h-[151px]"
+    >
+      <div className="mx-auto relative z-10 grid max-w-[1237px] grid-cols-2 gap-x-4 gap-y-12 px-4 sm:gap-x-8 sm:px-6 md:grid-cols-4 md:gap-y-0">
         {statistics.map((item) => (
           <div key={item.label} className="min-w-0 text-center">
             <div className="flex items-center justify-center">
